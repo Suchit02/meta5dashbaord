@@ -4,8 +4,8 @@
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-lg flex flex-col items-center py-8">
         <div class="flex items-center mb-8">
-            <div class="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center mr-2">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#6C3EF4"/><text x="50%" y="55%" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" dy=".3em">F4U</text></svg>
+            <div class="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center mr-2 overflow-hidden">
+                <img src="/asset/logo/logo.png" alt="Logo" class="object-contain w-8 h-8">
             </div>
             <span class="text-xl font-bold text-violet-700">Fundings4u</span>
         </div>

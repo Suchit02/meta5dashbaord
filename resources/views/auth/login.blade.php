@@ -3,8 +3,8 @@
 <div class="flex min-h-screen items-center justify-center bg-gray-50">
     <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
         <div class="flex flex-col items-center mb-6">
-            <div class="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center mb-2">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#6C3EF4"/><text x="50%" y="55%" text-anchor="middle" fill="#fff" font-size="14" font-weight="bold" dy=".3em">F4U</text></svg>
+            <div class="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center mb-2 overflow-hidden">
+                <img src="/asset/logo/logo.png" alt="Logo" class="object-contain w-10 h-10">
             </div>
             <h1 class="text-2xl font-bold text-gray-900">Fundings4u</h1>
         </div>

@@ -26,25 +26,80 @@
                 <h2 class="text-2xl font-bold text-gray-900">Welcome, {{ $user->name }}</h2>
                 <div class="text-sm text-gray-400">MetaTrader Login: {{ $account['account_login'] ?? $user->account_login }}</div>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-4 flex-wrap">
                 <div class="bg-violet-100 text-violet-700 px-4 py-2 rounded-lg font-semibold">
                     Balance: ${{ number_format($account['account_balance'] ?? 0, 2) }}
                 </div>
                 <div class="bg-green-100 text-green-700 px-4 py-2 rounded-lg font-semibold">
                     Equity: ${{ number_format($account['equity'] ?? 0, 2) }}
                 </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-gray-700">Status:</span>
+                    @if($currentStatus === 'Profit')
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Profit</span>
+                    @elseif($currentStatus === 'Loss')
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold">Loss</span>
+                    @else
+                        <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-bold">Break Even</span>
+                    @endif
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="font-semibold text-gray-700">Total Profit:</span>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold {{ $totalProfit > 0 ? 'bg-green-100 text-green-700' : ($totalProfit < 0 ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-700') }}">
+                        ${{ number_format($totalProfit, 2) }}
+                    </span>
+                </div>
             </div>
         </div>
-        <!-- Chart Placeholder -->
-        <div class="bg-white rounded-lg shadow mb-8 p-6 flex flex-col items-center min-h-[200px]">
+        <!-- Chart: Profit & Loss -->
+        <div class="bg-white rounded-lg shadow mb-8 p-6 flex flex-col items-center min-h-[250px]">
             <div class="w-full flex justify-between items-center mb-2">
-                <span class="font-semibold text-gray-700">Account Balance</span>
-                <span class="text-gray-400 text-xs">(Chart placeholder)</span>
+                <span class="font-semibold text-gray-700">Profit & Loss</span>
+                <span class="text-gray-400 text-xs">(Live Data)</span>
             </div>
-            <div class="w-full h-32 bg-gradient-to-r from-violet-100 to-violet-50 rounded flex items-center justify-center text-violet-400">
-                <span class="text-lg">[Chart will appear here]</span>
+            <div class="w-full">
+                <canvas id="profitLossChart" height="70"></canvas>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var ctx = document.getElementById('profitLossChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: @json($chartLabels),
+                        datasets: [{
+                            label: 'Profit/Loss',
+                            data: @json($chartData),
+                            fill: true,
+                            borderColor: '#6C3EF4',
+                            backgroundColor: 'rgba(108,62,244,0.08)',
+                            tension: 0.4,
+                            pointRadius: 3,
+                            pointBackgroundColor: '#6C3EF4',
+                            pointBorderColor: '#fff',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { display: false },
+                        },
+                        scales: {
+                            x: {
+                                display: true,
+                                ticks: { color: '#a3a3c2', font: { size: 11 } }
+                            },
+                            y: {
+                                display: true,
+                                ticks: { color: '#6C3EF4', font: { size: 11 } }
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
         <!-- Account Info Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow p-6">

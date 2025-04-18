@@ -1,0 +1,22 @@
+body { background: #fafbfc; font-family: 'Inter', Arial, sans-serif; margin: 0; }
+.auth-container { max-width: 380px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 3px 24px #d3d3f3; padding: 36px 32px; }
+.auth-container h2 { font-size: 1.6rem; margin-bottom: 18px; color: #2d006b; }
+.auth-container input[type="text"],
+.auth-container input[type="email"],
+.auth-container input[type="password"] { width: 100%; padding: 12px; margin: 10px 0 16px; border: 1px solid #d9d9e3; border-radius: 6px; font-size: 1rem; }
+.auth-container button { width: 100%; padding: 12px; background: #6c3ef4; color: #fff; border: none; border-radius: 7px; font-size: 1.1rem; cursor: pointer; margin-bottom: 10px; }
+.auth-container button:hover { background: #4b1fd7; }
+.auth-container p { text-align: center; color: #888; font-size: 0.97rem; }
+.auth-container a { color: #6c3ef4; text-decoration: none; }
+.auth-container .error-box { background: #ffeaea; color: #d8000c; border-radius: 6px; padding: 10px; margin-bottom: 10px; }
+.auth-container .success-box { background: #eaffea; color: #008a1a; border-radius: 6px; padding: 10px; margin-bottom: 10px; }
+.dashboard-container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 3px 24px #e5e5fa; padding: 36px 32px; }
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.dashboard-header h2 { color: #2d006b; }
+.logout-link { color: #ff3b3b; text-decoration: none; font-weight: bold; }
+.account-info, .trading-history { margin-bottom: 32px; }
+.account-info h3, .trading-history h3 { color: #6c3ef4; margin-bottom: 14px; }
+.account-info-table, .trading-history-table { width: 100%; border-collapse: collapse; }
+.account-info-table td, .trading-history-table th, .trading-history-table td { border: 1px solid #e8e8fc; padding: 8px 12px; }
+.trading-history-table th { background: #f5f2ff; color: #6c3ef4; }
+.trading-history-table tr:nth-child(even) { background: #fafbfc; }
